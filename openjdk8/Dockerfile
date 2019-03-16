@@ -1,13 +1,15 @@
-FROM alpine:latest
+FROM alpine:3.9
 
-RUN \
-  apk update && \
-  apk upgrade && \
-  apk add bash openjdk8 && \
-  rm -rf /var/cache/apk/*
+MAINTAINER Danny Bastos <danny.bastos.br@gmail.com>
 
 ENV JAVA_HOME /usr/lib/jvm/java-1.8-openjdk
+ENV PATH $PATH:$JAVA_HOME/bin
 
-WORKDIR /tmp
+RUN apk --progress --no-cache add \
+    bash \
+    openjdk8; \
+    java -Xshare:dump; \
+  	java -version; \
+  	javac -version
 
-CMD ["bash"]
+ENTRYPOINT bash
