@@ -1,0 +1,43 @@
+version: '3.0'
+services:
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      # - 443:443
+      - 5000:5000
+    environment:
+      REGISTRY_HTTP_ADDR: '0.0.0.0:5000'
+#      REGISTRY_HTTP_TLS_CERTIFICATE: '/certs/my-registry.crt'
+#      REGISTRY_HTTP_TLS_KEY: '/certs/my-registry.key'
+      REGISTRY_AUTH: 'htpasswd'
+      REGISTRY_AUTH_HTPASSWD_REALM: 'My Registry'
+      REGISTRY_AUTH_HTPASSWD_PATH: '/httpasswd_storage/htpasswd'
+      REGISTRY_STORAGE_DELETE_ENABLED: 'true'
+    volumes:
+      - ~/registry-data:/var/lib/registry
+      - ~/registry/auth/htpasswd:/httpasswd_storage/htpasswd
+#       - ~/registry/certs:/certs
+    networks:
+      - registry-net
+  registry-ui:
+    restart: always
+    image: konradkleine/docker-registry-frontend:v2
+    ports:
+      - 8080:80
+      # - 443:443
+    environment:
+      ENV_DOCKER_REGISTRY_HOST: 'registry'
+      ENV_DOCKER_REGISTRY_PORT: '5000'
+      # ENV_DOCKER_REGISTRY_USE_SSL: 1
+      # ENV_USE_SSL: 'yes'
+    volumes:
+      - ~/registry/certs/my-registry.crt:/etc/apache2/server.crt:ro
+      - ~/registry/certs/my-registry.key:/etc/apache2/server.key:ro
+    networks:
+      - registry-net
+    links:
+      - registry
+
+networks:
+  registry-net:
