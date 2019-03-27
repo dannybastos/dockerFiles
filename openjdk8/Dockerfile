@@ -7,6 +7,7 @@ ENV PATH $PATH:$JAVA_HOME/bin
 
 RUN apk --progress --no-cache add \
     bash \
+    nss \
     openjdk8; \
     java -Xshare:dump; \
   	java -version; \
