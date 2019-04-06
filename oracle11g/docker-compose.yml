@@ -1,0 +1,12 @@
+---
+version: '3.0'
+services:
+  oracle-xe:
+    build: .
+    image: dannybastos/oracle-xe-11g
+    restart: always
+    ports:
+      - "8080:8080"
+      - "1521:1521"
+    # volumes:
+    #   - /u01/app/oracle/oradata/XE
