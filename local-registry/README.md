@@ -1,6 +1,6 @@
 # Docker Registry Local
 
-## A simple use of docker registry in a local environment
+### A simple use of docker registry in a local environment
 
 ## System requirements
 - vagrant
