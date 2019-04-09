@@ -8,5 +8,4 @@ sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" $ORACLE_HOME/network/admin/listene
 sed -i -E "s/HOST = [^)]+/HOST = $HOSTNAME/g" $ORACLE_HOME/network/admin/tnsnames.ora
 
 /etc/init.d/oracle-xe start
-
 tailf /u01/app/oracle/diag/rdbms/xe/XE/trace/alert_XE.log
