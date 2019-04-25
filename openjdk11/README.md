@@ -1,11 +1,11 @@
-# Openjdk13
+# Openjdk11
 
-### This is a simple docker file for java 13 based on alpine linux
+### This is a simple docker file for java 11 based on ubuntu 18.04
 
 ## System requirements
 - Docker
 
 ## How to run
 ```
-docker run -it --name openjdk13 dannybastos/openjdk13
+docker run -it --name openjdk11 dannybastos/openjdk11
 ```
