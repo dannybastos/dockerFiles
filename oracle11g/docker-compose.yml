@@ -2,7 +2,7 @@
 version: '3.0'
 services:
   oracle-xe:
-    build: .
+#    build: .
     image: dannybastos/oracle-11g-xe
     restart: always
     ports:
