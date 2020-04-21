@@ -10,6 +10,7 @@
 ```
 docker-compose up
 ```
+DatabaseName: `xe`
 
 This container exposes the follow ports:
 - 1521 - db
