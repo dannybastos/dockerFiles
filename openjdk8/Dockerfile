@@ -10,7 +10,6 @@ RUN apk --progress --no-cache add \
     nss \
     openjdk8; \
     java -Xshare:dump; \
-  	java -version; \
-  	javac -version
+  	java -version
 
 ENTRYPOINT bash
